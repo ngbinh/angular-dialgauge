@@ -19,6 +19,7 @@ angular.module('angular-dialgauge', [
                 angle: '@',
                 units: '@',
                 title: '@',
+                showTotal: '@',
                 dialWidth: '@',
                 borderWidth: '@',
                 borderOffset: '@',
@@ -67,6 +68,7 @@ angular.module('angular-dialgauge', [
                     angle: 225,
                     units: "",
                     title: "",
+                    showTotal: false,
                     dialWidth: 3,
                     borderWidth: 1,
                     borderOffset: 2,
@@ -405,11 +407,14 @@ angular.module('angular-dialgauge', [
 
                     path += '<text text-anchor="middle" x="' + center + '" y="' + center + '">';
                     if (newValue !== undefined) {
-                        var dy = "";
+                        var dy = "",totalText="";
                         if(cfg.title == "") {
                             dy = "0.3em"
                         }
-                        path += '<tspan class="dialgauge-value" dy="'+ dy + '">' + Math.floor(newValue) + '/' + Math.floor(cfg.scaleMax - cfg.scaleMin) + '</tspan>';
+                        if(cfg.showTotal) {
+                          totalText = '/' + Math.floor(cfg.scaleMax - cfg.scaleMin);
+                        }
+                        path += '<tspan class="dialgauge-value" dy="'+ dy + '">' + Math.floor(newValue) + totalText + '</tspan>';
                     }
 
                     if (cfg.units != undefined) {
