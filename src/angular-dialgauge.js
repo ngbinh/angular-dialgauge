@@ -191,11 +191,11 @@ angular.module('angular-dialgauge', [
                         return;
                     }
 
-                    console.log("Centre", center, cfg.dialWidth);
+                    // console.log("Centre", center, cfg.dialWidth);
                     var radius = center - cfg.dialWidth;
-                    console.log("Radius", radius);
+                    // console.log("Radius", radius);
 
-                    console.log("This is", this);
+                    // console.log("This is", this);
 
                     // Sanitise the rotation
                     // Rotation should start at the top, so we need to subtract 90 degrees
@@ -409,7 +409,7 @@ angular.module('angular-dialgauge', [
                         if(cfg.title == "") {
                             dy = "0.3em"
                         }
-                        path += '<tspan class="dialgauge-value" dy="'+ dy + '">' + Math.floor(newValue) + '</tspan>';
+                        path += '<tspan class="dialgauge-value" dy="'+ dy + '">' + Math.floor(newValue) + '/' + Math.floor(cfg.scaleMax - cfg.scaleMin) + '</tspan>';
                     }
 
                     if (cfg.units != undefined) {
@@ -450,7 +450,7 @@ angular.module('angular-dialgauge', [
 
                 function parseParameters(cfgObject) {
                     for (var key in defaults) {
-                        console.log("Checking ", key);
+                        // console.log("Checking ", key);
 
                         if (cfgObject[key] !== undefined) {
                             cfg[key] = cfgObject[key];
@@ -505,4 +505,3 @@ angular.module('angular-dialgauge', [
         };
     })
 ;
-
